@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    font-family: sans-serif;
+    outline: none;
+    color: aliceblue;
+    border: none;
+    background-color: #1F2123;
+   
+}
+.cal{
+    padding: 10px;
+    position: relative;
+    background-color: #1F2123;
+    grid-template-columns: repeat(4,87.5px);
+    box-shadow: 6px 6px 12px #1B1818,-6px -6px 12px #1B1818!important;
+    display: grid;
+}
+.container{
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center !important;
+}
+button{
+    box-shadow: inset 6px 6px 12px #1B1818, inset -6px -6px 12px #1B1818!important;
+    margin: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    height: 70px;
+    width: 70px;
+}
+button:hover{
+    box-shadow: 6px 6px 12px #1B1818, -6px -6px 12px #1B1818!important;
+}
+input{
+    font-size: 40px;
+    padding: 0px 10px;
+    margin: 15px 10px;
+    grid-column: span 4;
+    height: 70px;
+    box-shadow: inset 6px 6px 12px #1B1818,inset -6px -6px 12px #1B1818!important;
+    text-align: end;
+}
+.ex{
+    color: #1F2123;
+    background-color: #e6e7ee;
+    box-shadow: inset 6px 6px 12px #959ba3, inset -6px -6px 12px #959ba3 !important;
+}
+.ex:hover{
+    box-shadow: 0px 0px 2px #959ba3, 0px 0px 2px #959ba3 !important;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="cal">
+            <input type="text" placeholder="0" id="example">
+            <button onclick="cle()">C</button>
+            <button onclick="display('%')">%</button>
+            <button onclick="del()">del</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')">X</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('00')">00</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="calculate()" class="ex">=</button>
+
+        </div>
+    </div>
+    <script>
+        
+        let example = document.getElementById("example")
+
+        function display(num){
+            example.value += num;
+        }
+
+        function calculate(){
+            try{
+                example.value = eval(example.value);
+            }
+            catch(err){
+                alert("Invalid");
+            }
+        }
+
+        function del(){
+            example.value = example.value.slice(0,-1);
+        }
+
+        function cle(){
+            example.value = " ";
+        }
+
+    </script>
+</body>
+</html>
